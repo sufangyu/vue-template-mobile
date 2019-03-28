@@ -1,0 +1,239 @@
+// --------------------------------------
+// Keyframes Animate
+// --------------------------------------
+
+@mixin effect() {
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(.55, 0, .55, .2);
+}
+
+// --------------------
+// 渐出渐隐
+// --------------------
+.fade-enter,
+.fade-appear {
+  opacity: 0;
+  @include effect();
+
+  animation-play-state: paused;
+}
+
+.fade-leave {
+  @include effect();
+
+  animation-play-state: paused;
+}
+
+.fade-enter,
+.fade-enter-active,
+.fade-appear,
+.fade-appear-active {
+  animation-name: fadeIn;
+  animation-play-state: running;
+}
+
+.fade-leave,
+.fade-leave-active {
+  animation-name: fadeOut;
+  animation-play-state: running;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+
+// --------------------
+// 缩放
+// --------------------
+.zoom-enter,
+.zoom-leave {
+  display: block;
+}
+.zoom-enter,
+.zoom-appear {
+  opacity: 0;
+  @include effect();
+
+  animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  animation-play-state: paused;
+}
+
+.zoom-leave {
+  @include effect();
+
+  animation-timing-function: cubic-bezier(0.6, -0.3, 0.74, 0.05);
+  animation-play-state: paused;
+}
+
+.zoom-enter,
+.zoom-enter-active,
+.zoom-appear,
+.zoom-appear-active {
+  animation-name: zoomIn;
+  animation-play-state: running;
+}
+
+.zoom-leave,
+.zoom-leave-active {
+  animation-name: zoomOut;
+  animation-play-state: running;
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 50%;
+    transform: scale(0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform-origin: 50% 50%;
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes zoomOut {
+  0% {
+    opacity: 1;
+    transform-origin: 50% 50%;
+    transform: scale(1, 1);
+  }
+
+  100% {
+    opacity: 0;
+    transform-origin: 50% 50%;
+    transform: scale(0, 0);
+  }
+}
+
+
+// --------------------
+// 渐隐下划
+// --------------------
+.fade-slide-enter,
+.fade-slide-leave {
+  display: block;
+}
+.fade-slide-enter,
+.fade-slide-appear {
+  opacity: 0;
+  @include effect();
+
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  animation-play-state: paused;
+}
+
+.fade-slide-leave {
+  @include effect();
+
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  animation-play-state: paused;
+}
+
+.fade-slide-enter,
+.fade-slide-enter-active,
+.fade-slide-appear,
+.fade-slide-appear-active {
+  animation-name: fadeSlideDown;
+  animation-play-state: running;
+}
+
+.fade-slide-leave,
+.fade-slide-leave-active {
+  animation-name: fadeSlideUp;
+  animation-play-state: running;
+}
+
+@keyframes fadeSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+}
+
+
+// ------------------------------
+// 底部抽出
+// ------------------------------
+.slide-up-enter,
+.slide-up-appear {
+  transform: translate(0, 100%);
+}
+
+.slide-up-enter,
+.slide-up-appear,
+.slide-up-leave {
+  @include effect();
+
+  animation-play-state: paused;
+}
+
+.slide-up-enter,
+.slide-up-enter-active,
+.slide-up-appear,
+.slide-up-appear-active {
+  animation-name: slideUpIn;
+  animation-play-state: running;
+}
+
+.slide-up-leave,
+.slide-up-leave-active {
+  animation-name: slideUpOut;
+  animation-play-state: running;
+}
+
+@keyframes slideUpIn {
+  0% {
+    transform: translate(0, 100%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slideUpOut {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(0, 100%);
+  }
+}

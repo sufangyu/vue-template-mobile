@@ -1,18 +1,35 @@
 <template>
   <div class="home">
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/labs">Labs</router-link>
+    </div>
+    
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>process.env =>> {{env}}</p>
+    <p>config =>> {{config}}</p>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import config from '@/config';
 
 export default {
   name: 'home',
   components: {
-    HelloWorld,
+  },
+  data() {
+    return {
+      env: process.env,
+      config,
+    };
   },
 };
 </script>
+
+<style lang="scss" scoped>
+img {
+  width: 100px;
+}
+</style>
