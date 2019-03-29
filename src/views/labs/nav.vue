@@ -11,12 +11,12 @@
         :border="false"
       >
         <van-collapse-item title="布局 Layout" name="1">
-          <van-cell title="Flex 弹性布局" is-link to="/labs/flex" />
-          <van-cell title="WhiteSpace 上下留白" is-link to="/labs/white-space" />
-          <van-cell title="WingBlank 两翼留白" is-link to="/labs/wing-blank" />
-          <van-cell title="Icon 图标" is-link to="/labs/icon" />
-          <van-cell title="Grid 宫格" is-link to="/labs/grid" />
-          <van-cell title="Filter 过滤器" is-link to="/labs/filter" />
+          <van-cell title="Flex 弹性布局" is-link :to="LABS.FLEX" />
+          <van-cell title="WhiteSpace 上下留白" is-link :to="LABS.WHITE_SPACE" />
+          <van-cell title="WingBlank 两翼留白" is-link :to="LABS.WING_BLANK" />
+          <van-cell title="Icon 图标" is-link :to="LABS.ICON" />
+          <van-cell title="Grid 宫格" is-link :to="LABS.GRID" />
+          <van-cell title="Filter 过滤器" is-link :to="LABS.FILTER" />
         </van-collapse-item>
       </van-collapse>
 
@@ -26,7 +26,7 @@
         :border="false"
       >
         <van-collapse-item title="表单 Form" name="1">
-          <van-cell title="验证 Validator" is-link to="/labs/validator" />
+          <van-cell title="验证 Validator" is-link :to="LABS.VALIDATOR" />
         </van-collapse-item>
       </van-collapse>
 
@@ -36,9 +36,9 @@
         :border="false"
       >
         <van-collapse-item title="其他 Others" name="1">
-          <van-cell title="Request 请求" is-link to="/labs/request" />
-          <van-cell title="Precision 小数精准度" is-link to="/labs/precision" />
-          <van-cell title="Skeleton 骨架" is-link to="/labs/skeleton" />
+          <van-cell title="Request 请求" is-link :to="LABS.REQUEST" />
+          <van-cell title="Precision 小数精准度" is-link :to="LABS.PERCISION" />
+          <van-cell title="Skeleton 骨架" is-link :to="LABS.SKELETON" />
         </van-collapse-item>
       </van-collapse>
     </div>
@@ -46,9 +46,12 @@
 </template>
 
 <script>
+import path from '@/router/path';
+
 export default {
   data() {
     return {
+      LABS: path.LABS,
       activeNamesLayout: ['1'],
       activeNamesForm: [],
       activeNamesOther: [],

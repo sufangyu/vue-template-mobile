@@ -60,6 +60,7 @@ npm run analyz
 │  │  └─validator.js    # 校验的多语言配置
 │  ├─mixins             # 全局混入  
 │  ├─router             # 路由配置文件. 如果项目大, 可按模块配置路由
+│  │  └─path.js         # 对外暴露路由路径配置
 │  ├─styles             # 全局样式文件
 │  │  ├─functions       # 函数
 │  │  └─mixins          # 混合
