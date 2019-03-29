@@ -2,58 +2,45 @@
  * 格式化时间
  *
  * @export
- * @param {*} time 时间
- * @param {*} cFormat 格式
+ * @param {*} date 时间
+ * @param {*} fmt 格式 y年 M月 d 日 H 小时 m 分 s 秒
  * @returns
  */
-export function parseTime(time, cFormat) {
-  if (arguments.length === 0) {
-    return null;
-  }
-  const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}';
-  let date;
-  if (typeof time === 'object') {
-    date = time;
-  } else {
-    if ((`''${time}`).length === 10) {
-      time = parseInt(time, 10) * 1000;
-    }
-    date = new Date(time);
-  }
-  const formatObj = {
-    y: date.getFullYear(),
-    m: date.getMonth() + 1,
-    d: date.getDate(),
-    h: date.getHours(),
-    i: date.getMinutes(),
-    s: date.getSeconds(),
-    a: date.getDay(),
+export function parseTime(date = new Date(), fmt = 'yyyy-MM-dd') {
+  date = new Date(date);
+  const o = {
+    'M+': date.getMonth() + 1, // 月份
+    'd+': date.getDate(), // 日
+    'h+': date.getHours() % 12 === 0 ? 12 : date.getHours() % 12, // 小时
+    'H+': date.getHours(), // 小时
+    'm+': date.getMinutes(), // 分
+    's+': date.getSeconds(), // 秒
+    'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
+    S: date.getMilliseconds(), // 毫秒
   };
-  const timeStr = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
-    let value = formatObj[key];
-    if (key === 'a') {
-      return ['一', '二', '三', '四', '五', '六', '日'][value - 1];
-    }
 
-    if (result.length > 0 && value < 10) {
-      value = `0${value}`;
+  if (/(y+)/.test(fmt)) {
+    fmt = fmt.replace(RegExp.$1, (`${date.getFullYear()}`).substr(4 - RegExp.$1.length));
+  }
+
+  Object.keys(o).forEach((k) => {
+    if (new RegExp(`(${k})`).test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : ((`00${o[k]}`).substr((`${o[k]}`).length)));
     }
-    return value || 0;
   });
-  return timeStr;
-}
 
+  return fmt;
+}
 
 /**
  * 格式化相对时间
  *
  * @export
  * @param {*} time
- * @param {*} option
+ * @param {*} fmt 同 parseTime 的fmt
  * @returns
  */
-export function formatTime(time, option) {
-  time = +time * 1000;
+export function formatTime(time, fmt) {
   const d = new Date(time);
   const now = Date.now();
   const diff = (now - d) / 1000;
@@ -70,11 +57,11 @@ export function formatTime(time, option) {
   if (diff < 3600 * 24 * 2) {
     return '1天前';
   }
-  if (option) {
-    return parseTime(time, option);
+  // 格式化时间 
+  if (fmt) {
+    return parseTime(time, fmt);
   }
-
-  return `${d.getMonth() + 1}月${d.getDate()}日${d.getHours()}时${d.getMinutes()}分${d.getSeconds()}秒`;
+  return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日${d.getHours()}时${d.getMinutes()}分${d.getSeconds()}秒`;
 }
 
 
