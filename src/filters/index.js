@@ -16,10 +16,10 @@ import {
  *
  * @export
  * @param {*} date 时间戳
- * @param {string} [pattern = 'YYYY-MM-DD HH:mm:ss'] 格式
+ * @param {string} [pattern = 'yyyy-MM-dd HH:mm:ss'] 格式
  * @returns
  */
-export function formatTime(date, pattern = '{y}-{m}-{d} {h}:{i}:{s}') {
+export function formatTime(date, pattern = 'yyyy-MM-dd HH:mm:ss') {
   if (!date) {
     return '-';
   }
