@@ -12,6 +12,7 @@ const sidebars = {
     '',
     'standard',
     'router',
+    'adaption',
     'proxy',
     'deploy',
   ],
