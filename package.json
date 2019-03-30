@@ -1,7 +1,7 @@
 {
-  "name": "vue-template-mobile",
-  "version": "1.0.0",
-  "description": "vue template mobile",
+  "name": "{{name}}",
+  "version": "{{version}}",
+  "description": "{{description}}",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
