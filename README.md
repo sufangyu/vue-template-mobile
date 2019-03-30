@@ -1,4 +1,4 @@
-# vue-template-mobile
+# {{name}}
 
 移动端项目通用模板
 
