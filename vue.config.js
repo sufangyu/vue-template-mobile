@@ -41,6 +41,7 @@ const addStyleResource = (rule) => {
 };
 
 module.exports = {
+  lintOnSave: 'error',
   publicPath: IS_PROD ? '/' : '/',
   css: {
     extract: true,
