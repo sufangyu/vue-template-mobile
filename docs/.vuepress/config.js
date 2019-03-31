@@ -19,6 +19,9 @@ const sidebars = {
   request: [
     '',
   ],
+  filter: [
+    '',
+  ],
 };
 
 function genSidebarConfig(...names) {
@@ -65,7 +68,8 @@ module.exports = {
         editLinkText: '帮助改进此页面！',
         nav: [
           { text: '指南', link: '/guide/' },
-          { text: '内置组件', link: '/components/' },
+          { text: '组件', link: '/components/' },
+          { text: '过滤器', link: '/filter/' },
           { text: '网络请求', link: '/request/' },
           { text: '任务', link: '/todo' },
         ],
@@ -73,6 +77,7 @@ module.exports = {
         sidebar: {
           '/guide/': genSidebarConfig('Guide'),
           '/request/': genSidebarConfig('Request'),
+          '/filter/': genSidebarConfig('Filter'),
           '/components/': genSidebarConfig('Components'),
         }
       }
