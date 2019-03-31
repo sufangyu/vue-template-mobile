@@ -13,7 +13,7 @@ export function toThousands(num) {
 
 
 /**
- * 阿拉伯数组转中文数组
+ * 阿拉伯数组转中文数字
  * @param {number} money 金额
  * 
  */
