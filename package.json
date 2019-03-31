@@ -61,9 +61,14 @@
     "webpack-dev-middleware": "3.6.0"
   },
   "lint-staged": {
-    "*.{js,vue}": [
-      "vue-cli-service lint",
-      "git add"
+    "linters": {
+      "*.{js,vue}": [
+        "vue-cli-service lint",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "package.json"
     ]
   }
 }
