@@ -10,7 +10,7 @@ export function parseTime(time, cFormat) {
   if (arguments.length === 0) {
     return null;
   }
-  const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}';
+  const format = cFormat || '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}';
   let date;
   if (typeof time === 'object') {
     date = time;
@@ -21,15 +21,15 @@ export function parseTime(time, cFormat) {
     date = new Date(time);
   }
   const formatObj = {
-    y: date.getFullYear(),
-    m: date.getMonth() + 1,
-    d: date.getDate(),
-    h: date.getHours(),
-    i: date.getMinutes(),
-    s: date.getSeconds(),
+    yyyy: date.getFullYear(),
+    MM: date.getMonth() + 1,
+    dd: date.getDate(),
+    hh: date.getHours(),
+    mm: date.getMinutes(),
+    ss: date.getSeconds(),
     a: date.getDay(),
   };
-  const timeStr = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
+  const timeStr = format.replace(/{(yyyy|MM|dd|hh|mm|ss|a)+}/g, (result, key) => {
     let value = formatObj[key];
     if (key === 'a') {
       return ['一', '二', '三', '四', '五', '六', '日'][value - 1];
@@ -48,15 +48,18 @@ export function parseTime(time, cFormat) {
  * 格式化相对时间
  *
  * @export
- * @param {*} time
+ * @param {*} time 目标时间
  * @param {*} option
  * @returns
  */
-export function formatTime(time, option) {
-  time = +time * 1000;
+export function fromNow(time, option) {
   const d = new Date(time);
   const now = Date.now();
   const diff = (now - d) / 1000;
+  if (diff < 0) {
+    console.warn(`${time} more than the current time`);
+    return time;
+  }
 
   if (diff < 30) {
     return '刚刚';
@@ -65,7 +68,7 @@ export function formatTime(time, option) {
     return `${Math.ceil(diff / 60)}分钟前`;
   }
   if (diff < 3600 * 24) {
-    return `${Math.ceil(diff / 3600)}小时前`;
+    return `${Math.floor(diff / 3600)}小时前`;
   }
   if (diff < 3600 * 24 * 2) {
     return '1天前';
@@ -74,7 +77,7 @@ export function formatTime(time, option) {
     return parseTime(time, option);
   }
 
-  return `${d.getMonth() + 1}月${d.getDate()}日${d.getHours()}时${d.getMinutes()}分${d.getSeconds()}秒`;
+  return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日${d.getHours()}时${d.getMinutes()}分${d.getSeconds()}秒`;
 }
 
 

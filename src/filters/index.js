@@ -1,5 +1,6 @@
 import {
   parseTime,
+  fromNow as fromNowFilter,
   formatPhone as formatPhoneFilter,
   formatPhoneHide as formatPhoneHideFilter,
   formatBank as formatBankFilter,
@@ -12,19 +13,35 @@ import {
 
 
 /**
- * 格式化日期
+ * 格式化时间
  *
  * @export
  * @param {*} date 时间戳
- * @param {string} [pattern = 'YYYY-MM-DD HH:mm:ss'] 格式
+ * @param {string} [pattern='{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}'] 格式
  * @returns
  */
-export function formatTime(date, pattern = '{y}-{m}-{d} {h}:{i}:{s}') {
+export function formatTime(date, pattern = '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}') {
   if (!date) {
     return '-';
   }
-
   return parseTime(date, pattern);
+}
+
+
+/**
+ * 相对时间
+ *
+ * @export
+ * @param {*} time
+ * @param {string} [pattern='{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}']
+ * @returns
+ */
+export function fromNow(time, pattern = '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}') {
+  if (!time) {
+    return '-';
+  }
+
+  return fromNowFilter(time, pattern);
 }
 
 
@@ -36,7 +53,7 @@ export function formatTime(date, pattern = '{y}-{m}-{d} {h}:{i}:{s}') {
  * @param {string} [separator=' '] 连接符
  * @returns
  */
-export function formatPhone(phone, separator) {
+export function formatPhone(phone, separator = ' ') {
   if (!phone) {
     return '-';
   }
@@ -79,7 +96,7 @@ export function formatBank(val) {
 
 /**
  * 千分位格式化
- * @param {数字} num
+ * @param {number} num
  */
 export function toThousands(num) {
   return toThousandsFilter(num);
@@ -87,8 +104,8 @@ export function toThousands(num) {
 
 
 /**
- * 阿拉伯数组转中文数组
- * @param {数字} num
+ * 阿拉伯数组转中文数字
+ * @param {number} num
  */
 export function convertCurrency(num) {
   return convertCurrencyFilter(num);
