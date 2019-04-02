@@ -37,6 +37,14 @@
       new VConsole();
     </script>
     <% } %>
+    <script src="//cdn.bootcss.com/fastclick/1.0.5/fastclick.js"></script>
+    <script>
+      if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body);
+        }, false);
+      }
+    </script>
   </head>
   <body>
     <noscript>
