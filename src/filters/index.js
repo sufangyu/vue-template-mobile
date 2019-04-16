@@ -5,6 +5,8 @@ import {
   formatPhoneHide as formatPhoneHideFilter,
   formatBank as formatBankFilter,
 } from '@/utils';
+
+
 import {
   toThousands as toThousandsFilter,
   formatFloat as formatFloatFilter,
@@ -16,8 +18,8 @@ import {
  * 格式化时间
  *
  * @export
- * @param {*} date 时间
- * @param {string} [pattern='yyyy-MM-dd HH:mm:ss'] 格式
+ * @param {*} date 时间戳
+ * @param {string} [pattern = 'yyyy-MM-dd HH:mm:ss'] 格式
  * @returns
  */
 export function formatTime(date, pattern = 'yyyy-MM-dd HH:mm:ss') {
@@ -33,7 +35,7 @@ export function formatTime(date, pattern = 'yyyy-MM-dd HH:mm:ss') {
  *
  * @export
  * @param {*} time
- * @param {string} [pattern='yyyy-MM-dd HH:mm:ss']
+ * @param {string} [pattern = 'yyyy-MM-dd HH:mm:ss']
  * @returns
  */
 export function fromNow(time, pattern = 'yyyy-MM-dd HH:mm:ss') {

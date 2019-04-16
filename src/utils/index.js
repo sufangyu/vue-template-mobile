@@ -25,14 +25,12 @@ export function parseTime(date = new Date(), fmt = 'yyyy-MM-dd HH:mm:ss') {
 
   Object.keys(o).forEach((k) => {
     if (new RegExp(`(${k})`).test(fmt)) {
-      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : ((`00${o[k]}`).substr((
-        `${o[k]}`).length)));
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : ((`00${o[k]}`).substr((`${o[k]}`).length)));
     }
   });
 
   return fmt;
 }
-
 
 /**
  * 格式化相对时间
@@ -98,10 +96,10 @@ export function getQueryObject(url) {
  * 序列化 对象
  *
  * @export
- * @param {string} [query='{}']
+ * @param {string} [query={}]
  * @returns
  */
-export function serialize(query = '{}') {
+export function serialize(query = {}) {
   const temp = [];
   /* eslint-disable no-restricted-syntax */
   for (const key in query) {
@@ -118,10 +116,10 @@ export function serialize(query = '{}') {
  * 反序列化 字符串
  *
  * @export
- * @param {object} [query={}]
+ * @param {object} [query='']
  * @returns
  */
-export function deserialize(query = {}) {
+export function deserialize(query = '') {
   // 参数为空 或者 为空对象返回空对象
   if (!query || JSON.stringify(query) === '{}') {
     return {};
