@@ -28,12 +28,12 @@
 │  │  └─path.js         # 对外暴露路由路径配置
 │  ├─styles             # 全局样式文件
 │  │  ├─functions       # 函数
-│  │  └─mixins          # 混合
-│  │  └─theme           # 主题变量
-│  │  └─animate.scss    # css 运动样式
-│  │  └─color.scss      # 颜色变量
-│  │  └─import.scss     # 对外导出入口
-│  │  └─index.scss      # 样式入口文件
+│  │  ├─mixins          # 混合
+│  │  ├─theme           # 主题变量
+│  │  ├─animate.scss    # css 运动样式
+│  │  ├─color.scss      # 颜色变量
+│  │  ├─import.scss     # 对外导出入口
+│  │  ├─index.scss      # 样式入口文件
 │  │  └─normalize.css   # 样式初始化
 │  ├─utils              # 工具库. 建议按模块组织, 例如 array.js, validate.js 等
 │  │  ├─auth.js         # 登录工具类
