@@ -44,7 +44,7 @@ module.exports = {
   lintOnSave: 'error',
   publicPath: IS_PROD ? '/' : '/',
   css: {
-    extract: true,
+    extract: !!IS_PROD,
   },
   configureWebpack: (config) => {
     if (IS_PROD) {
@@ -76,7 +76,7 @@ module.exports = {
   chainWebpack: (config) => {
     // 对运行环境(process.env)注入自定义配置
     config.plugin('define')
-      .tap((args) => { 
+      .tap((args) => {
         Object.assign(args[0]['process.env'], {
           'x-custom': '"vue-template-mobile"',
         });
@@ -88,7 +88,7 @@ module.exports = {
     types.forEach((type) => {
       addStyleResource(config.module.rule('scss').oneOf(type));
     });
-    
+
     // 批量处理 svg
     config.module
       .rule('svg')
@@ -117,7 +117,7 @@ module.exports = {
     config.resolve.alias
       .set('@', resolve('src'));
 
-    // build 打包使用 CDN 
+    // build 打包使用 CDN
     if (IS_PROD) {
       config.plugin('html')
         .tap((args) => {
@@ -137,8 +137,6 @@ module.exports = {
   // 代理配置
   devServer: {
     open: true,
-    host: 'localhost',
-    port: 8080,
     proxy: proxyConfig,
   },
 };
