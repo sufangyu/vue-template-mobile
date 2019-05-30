@@ -95,7 +95,7 @@ export default {
   &-justify-center {
     justify-content: center;
   }
-  &-justify-baseline {
+  &-justify-between {
     justify-content: space-between;
   }
   &-justify-around {
