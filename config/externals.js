@@ -5,9 +5,11 @@ module.exports = {
   vue: 'Vue',
   'vue-router': 'VueRouter',
   vuex: 'Vuex',
-  vant: 'vant',
   axios: 'axios',
   'js-cookie': 'Cookies',
   nprogress: 'NProgress',
+  'nprogress/nprogress.css': 'NProgress',
+  vant: 'vant',
+  'vant/lib/index.css': 'vant',
   'vee-validate': 'VeeValidate',
 };
